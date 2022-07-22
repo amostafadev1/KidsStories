@@ -1,4 +1,8 @@
 # Kids Stories
+<img src="mainactivity.png" width="250"
+float="left"/>
+<img src="storyactivity.png" width="250"/>
+<img src="settingsactivity.png" width="250"/>
 
 ### Content
 - Main Activity
