@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <RadioGroup
+        android:id="@+id/text_size_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:checkedButton="@id/medium_rb">
+
+        <RadioButton
+            android:id="@+id/small_rb"
+            style="@style/radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Small Text" />
+
+        <RadioButton
+            android:id="@+id/medium_rb"
+            style="@style/radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text" />
+
+        <RadioButton
+            android:id="@+id/large_rb"
+            style="@style/radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Large Text" />
+    </RadioGroup>
+
+</FrameLayout>
