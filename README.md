@@ -1,4 +1,8 @@
 # Kids Stories
+<img src="mainactivity.png" width="250"
+float="left"/>
+<img src="storyactivity.png" width="250"/>
+<img src="settingsactivity.png" width="250"/>
 
 ### Content
 - Main Activity
@@ -181,9 +185,13 @@ class StoryActivity : AppCompatActivity() {
         _binding = ActivityStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        title = getString(R.string.story)
+        val actionBar = supportActionBar
+
         val animal: Animal? = intent.getParcelableExtra(OBJECT_NAME)
         if (animal != null) {
-            title = animal.title
+            if (actionBar != null)
+                actionBar.subtitle = animal.title
             setViews(animal)
         }
 
@@ -206,8 +214,7 @@ class StoryActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
+        menuInflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
