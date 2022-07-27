@@ -12,9 +12,10 @@ float="left"/>
 ---
 
 ### Main Activity
-- RecyclerView
-- Item Layout
-- Adapter
+- activity_main.xml
+- item_animal.xml
+- AnimalListAdapter.kt
+- MainActivity.kt
 
 #### activity_main.xml
 ```
@@ -49,14 +50,11 @@ float="left"/>
         android:id="@+id/bg_item"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        app:tint="#AB000000"
+        android:tintMode="src_atop"
         android:scaleType="centerCrop"
-        tools:src="@drawable/bee" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.7"
-        android:src="@color/black" />
+        tools:src="@drawable/bee"
+        android:contentDescription="@string/story_icon_background" />
 
     <TextView
         android:id="@+id/title_tv"
@@ -78,27 +76,35 @@ float="left"/>
 ```
 #### AnimalListAdapter.kt
 ```
+typealias ClickHandler = (position: Int) -> Unit
+
 class AnimalListAdapter(
     private val animalList: ArrayList<Animal>,
-    private val listener: AnimalItemCL
-) :
-    RecyclerView.Adapter<AnimalListAdapter.VH>() {
-    inner class VH(binding: ItemAnimalBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    private val listener: ClickHandler = {}
+) : RecyclerView.Adapter<AnimalListAdapter.VH>() {
+
+    class VH(
+        binding: ItemAnimalBinding,
+        listener: ClickHandler /* = (position: Int) -> Unit */
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         val titleItemText = binding.titleTv
         val bgItemImage = binding.bgItem
 
         init {
-            binding.root.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            listener.onClick(v, adapterPosition)
+            binding.root.setOnClickListener {
+                listener(adapterPosition)
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        VH(ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(
+        ItemAnimalBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        ), listener
+    )
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.titleItemText.text = animalList[position].title
@@ -106,9 +112,64 @@ class AnimalListAdapter(
     }
 
     override fun getItemCount() = animalList.size
+}
+```
+#### MainActivity.kt
+```
+class MainActivity : AppCompatActivity() {
+    private val OBJECT_NAME = "com.example.kidsstories.ANIMAL"
+    private lateinit var binding: ActivityMainBinding
 
-    fun interface AnimalItemCL {
-        fun onClick(view: View?, position: Int)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        title = getString(R.string.main_name)
+        val animals = arrayListOf(
+            Animal(
+                getString(R.string.bee_title),
+                R.raw.bee,
+                R.drawable.bee,
+                R.string.bee_story
+            ),
+            Animal(
+                getString(R.string.chicken_title),
+                R.raw.chicken,
+                R.drawable.chicken,
+                R.string.chicken_story
+            ),
+            Animal(
+                getString(R.string.cat_title),
+                R.raw.cat,
+                R.drawable.cat,
+                R.string.cat_story
+            ),
+            Animal(
+                getString(R.string.duck_title),
+                R.raw.duck,
+                R.drawable.duck,
+                R.string.duck_story
+            )
+        )
+
+        val adapter = AnimalListAdapter(animals) {
+            val intent = Intent(this, StoryActivity::class.java)
+            intent.putExtra(OBJECT_NAME, animals[it])
+            startActivity(intent)
+        }
+
+        binding.animalRv.adapter = adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Temporary, because we have one item.
+        startActivity(Intent(this, SettingsActivity::class.java))
+        return super.onOptionsItemSelected(item)
     }
 }
 ```
@@ -189,9 +250,9 @@ class StoryActivity : AppCompatActivity() {
         val actionBar = supportActionBar
 
         val animal: Animal? = intent.getParcelableExtra(OBJECT_NAME)
-        if (animal != null) {
-            if (actionBar != null)
-                actionBar.subtitle = animal.title
+
+        animal?.let {
+            actionBar?.subtitle = title
             setViews(animal)
         }
 
