@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.core.content.ContextCompat.startActivity
 import com.example.kidsstories.databinding.ActivityStoryBinding
 
 class StoryActivity : AppCompatActivity() {
@@ -36,8 +35,8 @@ class StoryActivity : AppCompatActivity() {
         val animal: Animal? = intent.getParcelableExtra(OBJECT_NAME)
 
         animal?.let {
-            actionBar?.subtitle = title
-            setViews(animal)
+            actionBar?.subtitle = it.title
+            setViews(it)
         }
 
         textPref = getSharedPreferences(SETTINGS, MODE_PRIVATE)
