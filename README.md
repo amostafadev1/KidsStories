@@ -252,8 +252,8 @@ class StoryActivity : AppCompatActivity() {
         val animal: Animal? = intent.getParcelableExtra(OBJECT_NAME)
 
         animal?.let {
-            actionBar?.subtitle = title
-            setViews(animal)
+            actionBar?.subtitle = it.title
+            setViews(it)
         }
 
         textPref = getSharedPreferences(SETTINGS, MODE_PRIVATE)
