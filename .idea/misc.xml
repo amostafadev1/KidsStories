@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/code/android/KidsStories/app/src/main/res/drawable-anydpi/ic_settings.xml" value="0.2005" />
+        <entry key="..\:/code/android/KidsStories/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2005" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/drawable/bg_list.xml" value="0.2415" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/drawable/bg_title.xml" value="0.2415" />
+        <entry key="..\:/code/android/KidsStories/app/src/main/res/drawable/duckling_foreground.xml" value="0.2005" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/drawable/ic_settings.xml" value="0.182" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/font/aclonica.xml" value="0.3181434599156118" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/layout/activity_main.xml" value="0.29743589743589743" />
@@ -13,6 +15,10 @@
         <entry key="..\:/code/android/KidsStories/app/src/main/res/layout/activity_story.xml" value="0.29743589743589743" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/layout/item_animal.xml" value="0.2975630611372381" />
         <entry key="..\:/code/android/KidsStories/app/src/main/res/menu/menu.xml" value="0.2936708860759494" />
+        <entry key="..\:/code/android/KidsStories/app/src/main/res/mipmap-anydpi-v26/duckling.xml" value="0.2005" />
+        <entry key="..\:/code/android/KidsStories/app/src/main/res/mipmap-anydpi-v26/duckling_round.xml" value="0.2005" />
+        <entry key="..\:/code/android/KidsStories/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2005" />
+        <entry key="..\:/code/android/KidsStories/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2005" />
       </map>
     </option>
   </component>

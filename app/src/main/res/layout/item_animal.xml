@@ -13,14 +13,11 @@
         android:id="@+id/bg_item"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        app:tint="#AB000000"
+        android:tintMode="src_atop"
         android:scaleType="centerCrop"
-        tools:src="@drawable/bee" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.7"
-        android:src="@color/black" />
+        tools:src="@drawable/bee"
+        android:contentDescription="@string/story_icon_background" />
 
     <TextView
         android:id="@+id/title_tv"

@@ -43,15 +43,13 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        val listener = AnimalListAdapter.AnimalItemCL { _, position ->
+        val adapter = AnimalListAdapter(animals) {
             val intent = Intent(this, StoryActivity::class.java)
-            intent.putExtra(OBJECT_NAME, animals[position])
+            intent.putExtra(OBJECT_NAME, animals[it])
             startActivity(intent)
         }
 
-        val adapter = AnimalListAdapter(animals, listener)
         binding.animalRv.adapter = adapter
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -61,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Temporary, because we have one item.
-        startActivity(Intent(this,SettingsActivity::class.java))
+        startActivity(Intent(this, SettingsActivity::class.java))
         return super.onOptionsItemSelected(item)
     }
 

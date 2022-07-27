@@ -6,27 +6,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsstories.databinding.ItemAnimalBinding
 
+typealias ClickHandler = (position: Int) -> Unit
+
 class AnimalListAdapter(
     private val animalList: ArrayList<Animal>,
-    private val listener: AnimalItemCL
-) :
-    RecyclerView.Adapter<AnimalListAdapter.VH>() {
-    inner class VH(binding: ItemAnimalBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    private val listener: ClickHandler = {}
+) : RecyclerView.Adapter<AnimalListAdapter.VH>() {
+
+    class VH(
+        binding: ItemAnimalBinding,
+        listener: ClickHandler /* = (position: Int) -> Unit */
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         val titleItemText = binding.titleTv
         val bgItemImage = binding.bgItem
 
         init {
-            binding.root.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            listener.onClick(v, adapterPosition)
+            binding.root.setOnClickListener {
+                listener(adapterPosition)
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        VH(ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VH(
+        ItemAnimalBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        ), listener
+    )
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.titleItemText.text = animalList[position].title
@@ -34,8 +42,4 @@ class AnimalListAdapter(
     }
 
     override fun getItemCount() = animalList.size
-
-    fun interface AnimalItemCL {
-        fun onClick(view: View?, position: Int)
-    }
 }

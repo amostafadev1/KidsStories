@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat.startActivity
 import com.example.kidsstories.databinding.ActivityStoryBinding
 
 class StoryActivity : AppCompatActivity() {
@@ -33,9 +34,9 @@ class StoryActivity : AppCompatActivity() {
         val actionBar = supportActionBar
 
         val animal: Animal? = intent.getParcelableExtra(OBJECT_NAME)
-        if (animal != null) {
-            if (actionBar != null)
-                actionBar.subtitle = animal.title
+
+        animal?.let {
+            actionBar?.subtitle = title
             setViews(animal)
         }
 
