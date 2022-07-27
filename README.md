@@ -208,14 +208,15 @@ class MainActivity : AppCompatActivity() {
             android:textColor="@color/black"
             android:textSize="24sp"
             tools:text="@string/bee_story" />
-
     </ScrollView>
 
     <ImageView
         android:id="@+id/story_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
+        android:background="@color/black"
+        android:contentDescription="@string/main_animal_story_image"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -259,7 +260,7 @@ class StoryActivity : AppCompatActivity() {
         textPref = getSharedPreferences(SETTINGS, MODE_PRIVATE)
 
         binding.storyImage.setOnClickListener {
-            binding.storyText.visibility = if (visibilitySwitch) View.GONE else View.VISIBLE
+            binding.storyScroll.visibility = if (visibilitySwitch) View.GONE else View.VISIBLE
         }
 
         binding.storyText.setOnClickListener {
