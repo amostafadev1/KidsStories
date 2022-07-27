@@ -42,7 +42,7 @@ class StoryActivity : AppCompatActivity() {
         textPref = getSharedPreferences(SETTINGS, MODE_PRIVATE)
 
         binding.storyImage.setOnClickListener {
-            binding.storyText.visibility = if (visibilitySwitch) View.GONE else View.VISIBLE
+            binding.storyScroll.visibility = if (visibilitySwitch) View.GONE else View.VISIBLE
         }
 
         binding.storyText.setOnClickListener {
