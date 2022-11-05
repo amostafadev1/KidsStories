@@ -18,64 +18,64 @@ float="left"/>
 - MainActivity.kt
 
 #### activity_main.xml
-```
+```xml
 <androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/animal_rv"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingHorizontal="16dp"
-    android:paddingTop="16dp"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context=".MainActivity"
-    tools:listitem="@layout/item_animal">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/animal_rv"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingHorizontal="16dp"
+android:paddingTop="16dp"
+app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+tools:context=".MainActivity"
+tools:listitem="@layout/item_animal">
 
 </androidx.recyclerview.widget.RecyclerView>
 ```
 #### item_animal.xml
-```
+```xml
 <com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="8dp"
-    android:padding="16dp"
-    app:cardCornerRadius="40dp">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginVertical="8dp"
+android:padding="16dp"
+app:cardCornerRadius="40dp">
 
-    <ImageView
-        android:id="@+id/bg_item"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        app:tint="#AB000000"
-        android:tintMode="src_atop"
-        android:scaleType="centerCrop"
-        tools:src="@drawable/bee"
-        android:contentDescription="@string/story_icon_background" />
+<ImageView
+android:id="@+id/bg_item"
+android:layout_width="match_parent"
+android:layout_height="120dp"
+app:tint="#AB000000"
+android:tintMode="src_atop"
+android:scaleType="centerCrop"
+tools:src="@drawable/bee"
+android:contentDescription="@string/story_icon_background" />
 
-    <TextView
-        android:id="@+id/title_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/cutive_mono"
-        android:gravity="center"
-        android:shadowColor="@color/black"
-        android:shadowDx="2"
-        android:padding="8dp"
-        android:shadowDy="2"
-        android:shadowRadius="3"
-        android:textColor="@color/cyan"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        tools:text="@string/bee_title" />
+<TextView
+android:id="@+id/title_tv"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fontFamily="@font/cutive_mono"
+android:gravity="center"
+android:shadowColor="@color/black"
+android:shadowDx="2"
+android:padding="8dp"
+android:shadowDy="2"
+android:shadowRadius="3"
+android:textColor="@color/cyan"
+android:textSize="28sp"
+android:textStyle="bold"
+tools:text="@string/bee_title" />
 
 </com.google.android.material.card.MaterialCardView>
 ```
 #### AnimalListAdapter.kt
-```
+```kotlin
 typealias ClickHandler = (position: Int) -> Unit
 
 class AnimalListAdapter(
@@ -115,7 +115,7 @@ class AnimalListAdapter(
 }
 ```
 #### MainActivity.kt
-```
+```kotlin
 class MainActivity : AppCompatActivity() {
     private val OBJECT_NAME = "com.example.kidsstories.ANIMAL"
     private lateinit var binding: ActivityMainBinding
@@ -179,55 +179,55 @@ class MainActivity : AppCompatActivity() {
 - StoryActivity.kt
 
 #### activity_story.xml
-```
+```xml
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".StoryActivity">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".StoryActivity">
 
-    <ScrollView
-        android:id="@+id/story_scroll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@id/story_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="2">
+<ScrollView
+android:id="@+id/story_scroll"
+android:layout_width="0dp"
+android:layout_height="0dp"
+android:paddingHorizontal="16dp"
+app:layout_constraintBottom_toTopOf="@id/story_image"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintVertical_weight="2">
 
-        <TextView
-            android:id="@+id/story_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/love_ya_like_a_sister"
-            android:lineHeight="40dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:text="@string/bee_story" />
-    </ScrollView>
+<TextView
+android:id="@+id/story_text"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:fontFamily="@font/love_ya_like_a_sister"
+android:lineHeight="40dp"
+android:textColor="@color/black"
+android:textSize="24sp"
+tools:text="@string/bee_story" />
+</ScrollView>
 
-    <ImageView
-        android:id="@+id/story_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/black"
-        android:contentDescription="@string/main_animal_story_image"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/story_scroll"
-        app:layout_constraintVertical_weight="1"
-        tools:src="@drawable/bee" />
+<ImageView
+android:id="@+id/story_image"
+android:layout_width="0dp"
+android:layout_height="0dp"
+android:background="@color/black"
+android:contentDescription="@string/main_animal_story_image"
+android:scaleType="fitCenter"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/story_scroll"
+app:layout_constraintVertical_weight="1"
+tools:src="@drawable/bee" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 #### StoryActivity.kt
-```
+```kotlin
 class StoryActivity : AppCompatActivity() {
     private val OBJECT_NAME = "com.example.kidsstories.ANIMAL"
     private var _binding: ActivityStoryBinding? = null
@@ -310,48 +310,48 @@ class StoryActivity : AppCompatActivity() {
 - SettingsViewModel.kt
 
 #### activity_settings.xml
-```
+```xml
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".SettingsActivity">
 
-    <RadioGroup
-        android:id="@+id/text_size_radiogroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:checkedButton="@id/medium_rb">
+<RadioGroup
+android:id="@+id/text_size_radiogroup"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:checkedButton="@id/medium_rb">
 
-        <RadioButton
-            android:id="@+id/small_rb"
-            style="@style/radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Small Text" />
+<RadioButton
+android:id="@+id/small_rb"
+style="@style/radio_button"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Small Text" />
 
-        <RadioButton
-            android:id="@+id/medium_rb"
-            style="@style/radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium Text" />
+<RadioButton
+android:id="@+id/medium_rb"
+style="@style/radio_button"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Medium Text" />
 
-        <RadioButton
-            android:id="@+id/large_rb"
-            style="@style/radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Large Text" />
-    </RadioGroup>
+<RadioButton
+android:id="@+id/large_rb"
+style="@style/radio_button"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Large Text" />
+</RadioGroup>
 
 </FrameLayout>
 ```
 #### SettingsActivity.kt
-```
+```kotlin
 class SettingsActivity : AppCompatActivity() {
 
     private val SETTINGS = "settings"
@@ -407,14 +407,14 @@ class SettingsActivity : AppCompatActivity() {
 }
 ```
 #### SettingsViewModel.kt
-```
-class SettingsViewModel:ViewModel() {
+```kotlin
+class SettingsViewModel: ViewModel() {
     var textSize = MutableLiveData<Float>()
 }
 ```
 ---
 ### Animal Class
-```
+```kotlin
 data class Animal(
     val title: String,
     @RawRes val sound: Int,
